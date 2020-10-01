@@ -2,6 +2,7 @@ package oily.main;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -19,15 +20,15 @@ public class View extends JFrame {
 
 	private JPanel panelBottom;
 	private JButton buttonSegment;
-	private ImageIcon icon;
 	private BufferedImage image;
 	private JLabel label;
+	private Container contentPane;
 
 	public View() {
 		super("View");
 		
 		try {
-			image = ImageIO.read(new File("./res/landscape.jpg"));
+			image = ImageIO.read(new File("./res/man.jpg"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -38,12 +39,11 @@ public class View extends JFrame {
 		panelBottom = new JPanel();
 		panelBottom.add(buttonSegment);
 		
-		Container contentPane = getContentPane();
+		contentPane = getContentPane();
 		contentPane.setLayout(new BorderLayout());
 		
 		label = new JLabel();
-		icon = new ImageIcon(image);
-		label.setIcon(icon);
+		setImage(image);
 		
 		contentPane.add(panelBottom, BorderLayout.SOUTH);
 		contentPane.add(label, BorderLayout.NORTH);
@@ -61,9 +61,9 @@ public class View extends JFrame {
 
 	public void setImage(BufferedImage image) {
 		this.image = image;
-		ImageIcon newIcon = new ImageIcon(image);
+		Image displayedImage = this.image.getScaledInstance(1000, 1000, 0);
+		ImageIcon newIcon = new ImageIcon(displayedImage);
 		label.setIcon(newIcon);
-		System.out.println(panelBottom.getHeight());
 	}
 
 	public BufferedImage getImage() {

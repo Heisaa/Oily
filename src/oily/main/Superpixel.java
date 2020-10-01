@@ -135,15 +135,15 @@ public class Superpixel {
 		
 
 		// mark superpixel (cluster) centers with red pixel
-		for (int i = 0; i < clusters.length; i++) {
-			Cluster c = clusters[i];
-			// result.setRGB((int)c.avg_x, (int)c.avg_y,
-			// Color.red.getRGB());
-
-			// Paint cluster in average color
-			// floodFill(result, new Point((int) c.avg_x, (int) c.avg_y), new Color(255, 0, 255),new Color((int) c.avg_red, (int) c.avg_green, (int) c.avg_blue));
-
-		}
+//		for (int i = 0; i < clusters.length; i++) {
+//			Cluster c = clusters[i];
+//			// result.setRGB((int)c.avg_x, (int)c.avg_y,
+//			// Color.red.getRGB());
+//
+//			// Paint cluster in average color
+//			// floodFill(result, new Point((int) c.avg_x, (int) c.avg_y), new Color(255, 0, 255),new Color((int) c.avg_red, (int) c.avg_green, (int) c.avg_blue));
+//
+//		}
 
 		long end = System.currentTimeMillis();
 		System.out.println(
