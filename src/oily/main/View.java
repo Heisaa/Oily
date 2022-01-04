@@ -28,7 +28,7 @@ public class View extends JFrame {
 		super("View");
 		
 		try {
-			image = ImageIO.read(new File("./res/man.jpg"));
+			image = ImageIO.read(new File("./res/land.jpg"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -50,7 +50,6 @@ public class View extends JFrame {
 		
 		// JFrame stuff
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(image.getWidth(), image.getHeight() + 75);
 		setLocationRelativeTo(null);
 		setVisible(true); 
 	}
@@ -61,7 +60,17 @@ public class View extends JFrame {
 
 	public void setImage(BufferedImage image) {
 		this.image = image;
-		Image displayedImage = this.image.getScaledInstance(1000, 1000, 0);
+		Image displayedImage;
+		
+		if (image.getHeight() > 800) {
+			double ratio = (double)image.getWidth() / image.getHeight();
+			displayedImage = this.image.getScaledInstance((int)(800 * ratio), 800, 0);
+			setSize((int)(800 * ratio), 800 + 75);
+		} else {
+			displayedImage = this.image;
+			setSize(image.getWidth(), image.getHeight() + 75);
+		}
+		
 		ImageIcon newIcon = new ImageIcon(displayedImage);
 		label.setIcon(newIcon);
 	}

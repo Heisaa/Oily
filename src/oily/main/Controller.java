@@ -21,7 +21,7 @@ public class Controller {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			BufferedImage image = view.getImage();
-			BufferedImage segImage = data.superPixel(image, 200,200); //20,20 for oil
+			BufferedImage segImage = data.superPixel(image, 80,80); //20,20 for oil, 22, 150 for me
 			view.setImage(segImage);
 		}
 		
